@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file contains a list of all configurable values used by the task node.
+
+The name of the parameter is defined by applying the 'name' attribute to the
+info tag.  For example, to define a parameter named 'username' add the
+following line:
+<info name="username" description="The username used to login"></info>
+
+Default values may be defined by placing the value of the parameter
+within the info tags.  For example, to define a parameter named 'username'
+with a default value of 'KD_WEBUSER' add the following line:
+<info name="username">KD_WEBUSER</info>
+-->
+<taskInfo version="1.0">
+  <info name="username" description="Username for a Chef User that has Edit permissions on nodes."></info>
+  <info name="private_key" type="encrypted" description="A path to the file on the task server or the full copied contents of the private key for the given username."></info>
+  <info name="organization_endpoint" description="API Endpoint to the Chef organization">https://api.opscode.com/organizations/ORGANIZATION</info>
+  <info name="enable_debug_logging" description="Enable debug logging if the value is set to 'Yes'.">No</info>
+</taskInfo>

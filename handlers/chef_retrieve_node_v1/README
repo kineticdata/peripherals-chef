@@ -1,0 +1,19 @@
+== Chef Retrieve Node
+Retrieves a information about a node in Chef within an organization.
+
+=== Parameters
+[Node Name]
+  Name of node you wish to retrieve information about.
+
+=== Sample Configuration
+Node Name:        test-node
+
+=== Results
+[Node JSON]
+  A JSON representation of the inputted node without with automatic attributes
+
+=== Detailed Description
+This handler retrieves a form.
+  With the use of this handler, the you can retrieve the
+  information about a node in Chef within an organization.
+  This information will return in JSON format.

@@ -1,0 +1,18 @@
+== Chef Retrieve Cookbooks
+Retrieves a list of Cookbooks from Chef from an organization.
+
+=== Parameters
+This handler has no parameters
+
+=== Sample Configuration
+This handler has no parameters
+
+=== Results
+[Cookbook Names]
+  A comma separated list of cookbook names
+
+=== Detailed Description
+This handler retrieves a list of all cookbooks for a
+particular organization space in chef.  This list will
+be returned in JSON format and also supply their corresponding
+URL's.

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="chef_node_attribute_delete" name="Chef Node Attribute Delete" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Deletes an attribute from an existing Chef Server node</description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="node_name" label="Node Name" required="true"
+            tooltip="Name of the node that the attribute will be removed from."/>
+        <parameter id="attribute_name" label="Attribute Name" required="true"
+            tooltip="Name of the attribute to be deleted."/>
+    </parameters>
+    <handler name="chef_node_attribute_delete" version="1">
+        <infos>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="private_key">&lt;%= @info['private_key'] %&gt;</info>
+            <info name="organization_endpoint">&lt;%= @info['organization_endpoint'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="node_name">&lt;%= @parameters['node_name'] %&gt;</parameter>
+            <parameter name="attribute_name">&lt;%= @parameters['attribute_name'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results>
+    </results>
+</taskDefinition>

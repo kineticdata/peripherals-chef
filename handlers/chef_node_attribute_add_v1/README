@@ -1,0 +1,29 @@
+== Chef Node Attribute Add
+  Adds an attribute to an existing node on Chef.
+
+=== Parameters
+  [Node Name]
+    Name of the node that the attribute will be added to.
+  [Attribute Name]
+    Name of the attribute to be added.
+  [Attribute Value]
+    Value of the attribute to be added.
+
+=== Sample Configuration
+Node Name:              test-node
+Attribute Name:        apache2-username
+Attribute Value:       pass1
+
+=== Results
+  This handler returns no results
+
+=== Detailed Description
+  To add an attribute to an existing Chef Server node, the handler uses Chef's
+  REST API. The handler first retrieves the users private key from the specified
+  location so that it can then be used to sign the REST request. The handler
+  then retrieves the node that will be updated to get all of the attributes that 
+  are currently attached to it. The inputted Attribute Name and Attribute Value
+  will then be added as a key/value pair to the 'normal' attribute object in the
+  node object. That updated object is then re-posted to the Chef Server to apply
+  the changes to the node attributes on the Chef Server. And errors that are
+  encountered during the process are caught and re-rasied by the handler.

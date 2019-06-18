@@ -1,0 +1,15 @@
+== Chef Node Delete
+  Deletes a node from a Chef Server
+
+=== Parameters
+  [Node Name]
+    Name of the node to be deleted
+
+=== Results
+  This handler returns no results
+
+=== Detailed Description
+  To delete a node from the Chef server, the handler uses Chef's REST API. 
+  The handler first retrieves the users private key from the specified
+  location so that it can then be used to sign the REST request. The handler
+  then uses the inputted node name to build the URL and delete the node.

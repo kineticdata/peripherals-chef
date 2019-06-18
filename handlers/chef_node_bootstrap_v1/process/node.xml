@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="chef_node_bootstrap" name="Chef Node Bootstrap" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Uses a previously installed knife instance on the Kinetic Task server to bootstrap a Chef node.</description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>true</deferrable>
+    <parameters>
+        <parameter id="server_name" label="Server Name" required="true" 
+            tooltip="The name for the server you wish to bootstrap." />
+        <parameter id="node_name" label="Node Name" required="true"
+            tooltip="The name that will be assigned to the node." />
+        <parameter id="recipe" label="Recipe" required="true"
+            tooltip="The recipe that you want to be put on the new node." />
+        <parameter id="user_config" label="User Config" required="true"
+            tooltip="The user config that will be used to setup the new node." />
+        <parameter id="source_name" label="Source Name" require="true"
+            tooltip="The source name that will be used to automatically complete the deferral when the bootstrap is complete."/>
+    </parameters>
+    <handler name="chef_node_bootstrap" version="1">
+        <infos>
+            <info name="knife_location">&lt;%= @info['knife_location'] %&gt;</info>
+            <info name="task_location">&lt;%= @info['task_location'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="server_name">&lt;%= @parameters['server_name'] %&gt;</parameter>
+            <parameter name="node_name">&lt;%= @parameters['node_name'] %&gt;</parameter>
+            <parameter name="recipe">&lt;%= @parameters['recipe'] %&gt;</parameter>
+            <parameter name="user_config">&lt;%= @parameters['user_config'] %&gt;</parameter>
+            <parameter name="source_name">&lt;%= @parameters['source_name'] %&gt;</parameter>
+            <parameter name="deferral_token">&lt;%= @task['Deferral Token'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+        <result name="deferral_token"></result>
+    </results>
+</taskDefinition>

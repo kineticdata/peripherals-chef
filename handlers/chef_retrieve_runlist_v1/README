@@ -1,0 +1,16 @@
+== Chef Retrieve Run List
+Retrieves a run list from Chef from a node.
+
+=== Parameters
+  [Node Name]
+    The name of the node to return the run list from
+
+=== Sample Configuration
+Node Name:        test-node
+
+=== Results
+[Run List]
+  A comma separated list of the recipes on the specified node
+
+=== Detailed Description
+Retrieves a run list in Chef for a specific node.

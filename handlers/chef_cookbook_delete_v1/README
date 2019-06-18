@@ -1,0 +1,21 @@
+== Chef Cookbook Delete
+  Deletes a cookbook from a Chef Server
+
+=== Parameters
+  [Cookbook Name]
+    Name of the cookbook to be deleted
+  [Cookbook Version]
+    Version of the cookbook to be deleted
+
+=== Sample Configuration
+Cookbook Name:              my_cookbook
+Cookbook Version:           0.1
+
+=== Results
+  This handler returns no results
+
+=== Detailed Description
+  To delete a cookbook from the Chef server, the handler uses Chef's REST API. 
+  The handler first retrieves the users private key from the specified
+  location so that it can then be used to sign the REST request. The handler
+  then uses the inputted cookbook name and version to delete the cookbook.

@@ -1,0 +1,17 @@
+== Chef Retrieve Nodes
+Retrieves a list of nodes from Chef from an organization.
+
+=== Parameters
+This handler has no parameters
+
+=== Sample Configuration
+This handler has no parameters
+
+=== Results
+[Node Names]
+  A comma separated list of node names
+
+
+=== Detailed Description
+  This handler retrieves a list of nodes in a particular chef
+  organization.  results with return in JSON format.

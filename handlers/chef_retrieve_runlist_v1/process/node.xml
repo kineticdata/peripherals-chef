@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="chef_retrieve_runlist" name="Chef Retrieve Run List" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>
+        Retrieves a Runlist from Chef for a node.
+    </description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+      <parameter id="node_name" label="Node Name" required="true"
+        tooltip="The name of the node to return the run list from."/>
+    </parameters>
+    <handler name="chef_retrieve_runlist" version="1">
+        <infos>
+          <info name="username">&lt;%= @info['username'] %&gt;</info>
+          <info name="organization_endpoint">&lt;%= @info['organization_endpoint'] %&gt;</info>
+          <info name="private_key">&lt;%= @info['private_key'] %&gt;</info>
+          <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+          <parameter name="node_name">&lt;%= @parameters['node_name'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results>
+      <result name="Run List" />
+    </results>
+</taskDefinition>

@@ -1,0 +1,3 @@
+Chef Add Recipe to Run List (2017-06-12)
+ * Initial version.  See README for details.
+ * Updated to return JSON form attributes

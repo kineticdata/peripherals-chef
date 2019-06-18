@@ -1,0 +1,16 @@
+== Chef Retrieve Cookbook
+Retrieves a Cookbook from Chef for an organization.
+
+=== Parameters
+[Cookbook Name]
+  Name of the cookbook you wish to retrieve.
+
+=== Sample Configuration
+Cookbook Name:       my_cookbook
+
+=== Results
+[Cookbook JSON]
+  A JSON representation of the specified cookbook
+
+=== Detailed Description
+  This handler retrieves a cookbook

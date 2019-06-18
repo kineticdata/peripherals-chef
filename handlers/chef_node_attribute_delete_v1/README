@@ -1,0 +1,26 @@
+== Chef Node Attribute Delete
+  Deletes an attribute from an existing Chef Server node
+
+=== Parameters
+  [Node Name]
+    Name of the node that the attribute will be removed from.
+  [Attribute Name]
+    Name of the attribute to be deleted.
+
+=== Sample Configuration
+Node Name:          test-node
+Attribute Name:     apache2-username
+
+=== Results
+  This handler returns no results
+
+=== Detailed Description
+  To delete an attribute from an existing Chef Server node, the handler uses
+  Chef's REST API. The handler first retrieves the users private key from the 
+  specified location so that it can then be used to sign the REST request. The
+  handler then retrieves the node that will be updated to get all of the
+  attributes that are currently attached to it, looks for a 'normal' attribute
+  key that matches the Attribute Name parameter and deletes it from the object.
+  The updated node object is then re-posted to the Chef Server to apply the
+  changes to the node attributes on the Chef Server. And errors that are
+  encountered during the process are caught and re-rasied by the handler.

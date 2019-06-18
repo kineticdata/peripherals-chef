@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="chef_node_attribute_add" name="Chef Node Attribute Add" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Adds an attribute to an existing node on Chef.</description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="node_name" label="Node Name" required="true"
+            tooltip="Name of the node that the attribute will be added to."/>
+        <parameter id="attribute_name" label="Attribute Name" required="true"
+            tooltip="Name of the attribute to be added."/>
+        <parameter id="attribute_value" label="Attribute Value" required="true"
+            tooltip="Value of the attribute to be added."/>
+    </parameters>
+    <handler name="chef_node_attribute_add" version="1">
+        <infos>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="private_key">&lt;%= @info['private_key'] %&gt;</info>
+            <info name="organization_endpoint">&lt;%= @info['organization_endpoint'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="node_name">&lt;%= @parameters['node_name'] %&gt;</parameter>
+            <parameter name="attribute_name">&lt;%= @parameters['attribute_name'] %&gt;</parameter>
+            <parameter name="attribute_value">&lt;%= @parameters['attribute_value'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results>
+    </results>
+</taskDefinition>

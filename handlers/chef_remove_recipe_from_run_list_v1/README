@@ -1,0 +1,21 @@
+== Chef Remove Recipe from Run List
+Removes a recipe from from a run list in a node.
+
+=== Parameters
+  [Recipe Name]
+    Name of recipe you wish to remove.
+  [Node Name]
+    Name of node you wish to remove recipe from.
+
+=== Sample Configuration
+Recipe Name:       my_cookbook
+Node Name:         test_node
+
+=== Results
+This handler returns no results
+
+=== Detailed Description
+This handler removes a recipe from a run list in Chef in a
+particular node.  Upon removing the recipe from a run list,
+your response will return with the nodes information,
+including the run-list.

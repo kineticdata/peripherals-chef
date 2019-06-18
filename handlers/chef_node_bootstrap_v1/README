@@ -1,0 +1,96 @@
+== chef_node_boostrap_v1
+A handler used to boostrap a node in chef using knife
+
+=== Parameters
+[Server Name]
+  The name for the server you wish to bootstrap.
+[Node Name]
+  The name that will be assigned to the node.
+[Recipe]
+  The recipe that you want to be put on the new node.
+[User Config]
+  The user config that will be used to setup the new node.
+[Source Name]
+  The name of the source where the tree running this handler is located. This 
+  will be used to automatically complete the deferral when the bootstrap is 
+  complete .
+
+=== Results
+[deferral_token]
+  The deferral token that will be used to restart the deferred node after the
+  bootstrap is complete.
+
+==== Sample Configuration
+Server Name:                  ec2-55-365-23-35.compute-1.amazonaws.com
+Node Name:                    handler-test
+Recipe:                       recipe[sample-recipe]
+User Config:                  ubuntu --sudo
+Source Name:                  Playground
+
+=== Detailed Description
+This handler bootstraps a node in chef by using an external ruby instance to
+call chef. Before uploading this handler, make sure to include a chef repository
+containing a knife.rb file either in the resources directory of the handler file
+or somewhere else on the task engine server. Once the handler starts running, it 
+begins by error checking the parameters based on what type of server the task 
+engine is running on (windows or unix). 
+
+On Windows machine the process consists of:
+- Loading and accepting the EULA for PsExec.exe (which will be used to run 
+knife as a background process) 
+
+On both Unix and Windows machines the process consists of:
+- Checking if a knife.rb file is accessible from the handler 
+- Checking if ruby with the json gem are installed (json is automatically 
+included in ruby 1.9 and later) 
+- Checking if the task location provided in the info values contains a source
+with the name provided in the parameters
+
+If none of these situations throw an error, the handler then moves onto calling
+a script that handles the actual knife bootstrap call. This script is passed a 
+json string of all the parameters provided to the handler. After creating a file
+within the handler resources folder that will contain all of the logging
+information for the bootstrap call (each call will have a different file, with
+the form of bootstrap_run_[epoch timestamp].log). The actual knife call that 
+will be made follows the form of:
+
+knife bootstrap [server name] -x [user config] -N "[node name]" -r "[recipe]" -c [knife.rb location]
+
+The bootstrapping process can take a long time, so once the script is started,
+the handler ends and is put into a deferred state until the bootstrap command is
+complete. Once that finishes, the script sends the deferral token back to the
+task tree using the Kinetic Task API and net/http (example POST that the script
+uses is below). Once the deferral token is recieved, the handler completes its 
+process.
+
+Task 3 Deferral Callback
+
+POST
+[task_location]/rest/v1/Trigger/createDeferred
+action=Complete&token=[deferral token]
+
+Task 4 Deferral Callback
+
+POST
+[task_location]/app/api/v1/complete-deferred-task/[source name]
+{
+    "token" : [deferral token]
+}
+
+=== Info Values
+Two info values need to be provided with Chef Node Bootstrap.
+[Knife Location]
+    The path to the knife.rb file on the server. If an absolute path is not given,
+    the handler assumes the file was placed in the resources directory. 
+
+    ie. chef-repo/.chef/knife.rb means that the file is located at chef_node_bootstrap_v1/handler/resources/chef-repo/.chef/knife.rb
+[Task Location]
+    The url where your task instance is located
+
+    ie. http://127.0.0.1:8080/kinetic-task
+
+=== Knife Configuration
+Information on how to configure knife on your machine can be found at -- 
+http://docs.getchef.com/chef/knife.html
+
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taskInfo version="1.0">
+  <info name="knife_location" description="The path to the knife.rb in the resources directory (ie. If knife.rb is at resources/.chef/knife.rb, the knife path if .chef/knife.rb)." />
+  <info name="task_location" description="The url where your task instance is located at (ie. http://task.company:8080/kinetic-task)." />
+</taskInfo>

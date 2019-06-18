@@ -1,0 +1,23 @@
+== Chef Add Recipe to Run List
+Adds a recipe to a run list for a specific Node in Chef
+
+=== Parameters
+  [Recipe Name]
+    Name of recipe you wish to add to a run list for a specific node.
+  [Node Name]
+    Name of node where the run list exists.
+
+=== Sample Configuration
+Recipe Name:         my_recipe
+Node Name:           test-node
+
+=== Results
+[node_json]
+  The JSON Object of the modified Node
+
+
+=== Detailed Description
+  This handler adds a recipe to a run list for a particular node 
+  in Chef.  If handler is successful, you will receive a JSON response
+  as a return with the nodes information, including the run list
+  array.

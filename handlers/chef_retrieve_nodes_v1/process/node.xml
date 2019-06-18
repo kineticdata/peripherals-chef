@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="chef_retrieve_nodes" name="Chef Retrieve Nodes" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>
+        Retrieves a list of nodes from Chef-io from an organization.
+    </description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+    </parameters>
+    <handler name="chef_retrieve_nodes" version="1">
+        <infos>
+          <info name="username">&lt;%= @info['username'] %&gt;</info>
+          <info name="private_key">&lt;%= @info['private_key'] %&gt;</info>
+          <info name="organization_endpoint">&lt;%= @info['organization_endpoint'] %&gt;</info>
+          <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+        </parameters>
+    </handler>
+    <results>
+        <result name="Node Names" />
+    </results>
+</taskDefinition>

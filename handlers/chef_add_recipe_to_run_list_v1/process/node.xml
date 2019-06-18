@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="chef_add_recipe_to_run_list" name="Chef Add Recipe to Run List" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>
+        Adds a recipe to a run list for a specific Node in Chef.
+    </description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+      <parameter id="recipe_name" label="Recipe Name" required="true"
+        tooltip="Name of the recipe that will be added to the run list."/>
+      <parameter id="node_name" label="Node Name" required="true"
+        tooltip="Name of the node that the recipe will be added to."/>
+    </parameters>
+    <handler name="chef_add_recipe_to_run_list" version="1">
+        <infos>
+          <info name="username">&lt;%= @info['username'] %&gt;</info>
+          <info name="private_key">&lt;%= @info['private_key'] %&gt;</info>
+          <info name="organization_endpoint">&lt;%= @info['organization_endpoint'] %&gt;</info>
+          <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+          <parameter name="recipe_name">&lt;%= @parameters['recipe_name'] %&gt;</parameter>
+          <parameter name="node_name">&lt;%= @parameters['node_name'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results>
+      <result name="node_json"/>
+    </results>
+</taskDefinition>

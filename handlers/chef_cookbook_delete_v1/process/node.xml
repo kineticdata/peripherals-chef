@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="chef_cookbook_delete" name="Chef Cookbook Delete" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Deletes a cookbook from a Chef server.</description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="cookbook_name" label="Cookbook Name" required="true"
+            tooltip="Name of the cookbook to be deleted."/>
+        <parameter id="cookbook_version" label="Cookbook Version" required="true"
+            tooltip="Version of the cookbook to be deleted."/>
+    </parameters>
+    <handler name="chef_cookbook_delete" version="1">
+        <infos>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="private_key">&lt;%= @info['private_key'] %&gt;</info>
+            <info name="organization_endpoint">&lt;%= @info['organization_endpoint'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="cookbook_name">&lt;%= @parameters['cookbook_name'] %&gt;</parameter>
+            <parameter name="cookbook_version">&lt;%= @parameters['cookbook_version'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results>
+    </results>
+</taskDefinition>
