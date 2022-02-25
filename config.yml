@@ -3,3 +3,4 @@ repo-name: peripherals-chef
 categories:
 - DevOps
 display-name: Chef
+description: Chef is an open source systems management and cloud infrastructure automation platform. Chef transforms infrastructure into code to automate server deployment and management.
